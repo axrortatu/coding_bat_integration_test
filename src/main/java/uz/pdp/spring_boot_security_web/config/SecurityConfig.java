@@ -15,7 +15,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import uz.pdp.spring_boot_security_web.service.AuthService;
 
 @Configuration
@@ -39,18 +38,16 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
         http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers(HttpMethod.GET,"/login").permitAll()
-                .requestMatchers(HttpMethod.GET,"/register").permitAll()
+                .requestMatchers(HttpMethod.GET,"/login","/register","/").permitAll()
                 .requestMatchers(HttpMethod.POST,"/api/user/add").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
-                .formLogin()
-                .defaultSuccessUrl("/user")
+                .formLogin().loginPage("/login").loginProcessingUrl("/login")
+                .defaultSuccessUrl("/home", true).permitAll()
                 .and()
                 .logout()
                 .logoutUrl("/logout")

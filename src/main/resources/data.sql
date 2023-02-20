@@ -1,8 +1,8 @@
-create table if not exist role_cb(
+create table if not exists role_cb(
     id serial primary key,
     name varchar not null
 );
-create table if not exist permission_cb(
+create table if not exists permission_cb(
     id serial primary key,
     name varchar not null
 );
