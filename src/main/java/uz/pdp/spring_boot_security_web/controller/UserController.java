@@ -24,9 +24,9 @@ public class UserController {
     ) {
 
         boolean isSuccess = userService.addUser(userRegisterDTO);
-        if (isSuccess){
+        if (isSuccess) {
             return "redirect:/";
-        }else{
+        } else {
             return "redirect:/register";
         }
 

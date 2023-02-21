@@ -43,9 +43,9 @@ public class SecurityConfig {
         http
                 .csrf().disable()
                 .authorizeHttpRequests()
-                .requestMatchers(HttpMethod.GET,"/login").permitAll()
-                .requestMatchers(HttpMethod.GET,"/register").permitAll()
-                .requestMatchers(HttpMethod.POST,"/api/user/add").permitAll()
+                .requestMatchers(HttpMethod.GET, "/login").permitAll()
+                .requestMatchers(HttpMethod.GET, "/register").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/user/add").permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -60,7 +60,7 @@ public class SecurityConfig {
     }
 
     @Bean
-    public AuthenticationProvider authenticationProvider(){
+    public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
         daoAuthenticationProvider.setUserDetailsService(authService);
         daoAuthenticationProvider.setPasswordEncoder(passwordEncoder());
@@ -74,8 +74,9 @@ public class SecurityConfig {
         authenticationManagerBuilder.authenticationProvider(authenticationProvider());
         return authenticationManagerBuilder.build();
     }
+
     @Bean
-    public ObjectMapper objectMapper(){
+    public ObjectMapper objectMapper() {
         return new ObjectMapper();
     }
 
