@@ -9,9 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("")
 @RequiredArgsConstructor
 public class AuthController {
+
     @GetMapping("/register")
     public String register(){
         return "register";
     }
 
+    @GetMapping("/login")
+    public String login(){
+        return "login";
+    }
 }

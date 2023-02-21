@@ -25,7 +25,6 @@ public class UserEntity extends BaseEntity implements UserDetails {
     private String name;
     private String username;
     private String password;
-
     @Column(name = "logo_url")
     private String logoUrl;
     @OneToOne(cascade = CascadeType.ALL)

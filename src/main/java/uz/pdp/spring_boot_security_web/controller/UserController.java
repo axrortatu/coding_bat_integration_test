@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import uz.pdp.spring_boot_security_web.common.exception.RecordNotFountException;
 import uz.pdp.spring_boot_security_web.model.dto.receive.UserRegisterDTO;
 import uz.pdp.spring_boot_security_web.service.UserService;
 
@@ -22,7 +21,7 @@ public class UserController {
     public String addUser(
             @ModelAttribute UserRegisterDTO userRegisterDTO
     ) {
-
+        System.out.println(userRegisterDTO.toString());
         boolean isSuccess = userService.addUser(userRegisterDTO);
         if (isSuccess){
             return "redirect:/";
