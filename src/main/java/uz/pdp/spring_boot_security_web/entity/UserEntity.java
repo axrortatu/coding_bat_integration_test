@@ -1,12 +1,10 @@
 package uz.pdp.spring_boot_security_web.entity;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import uz.pdp.spring_boot_security_web.config.AuditListener;
 import uz.pdp.spring_boot_security_web.entity.role.RoleEnum;
 import uz.pdp.spring_boot_security_web.entity.role.RolePermissionEntity;
 import uz.pdp.spring_boot_security_web.model.dto.receive.UserRegisterDTO;
@@ -20,6 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Builder
+@EntityListeners(AuditListener.class)
 public class UserEntity extends BaseEntity implements UserDetails {
 
     private String name;

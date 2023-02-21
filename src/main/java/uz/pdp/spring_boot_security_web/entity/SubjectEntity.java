@@ -2,6 +2,7 @@ package uz.pdp.spring_boot_security_web.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import uz.pdp.spring_boot_security_web.config.AuditListener;
 import uz.pdp.spring_boot_security_web.model.dto.SubjectRequestDTO;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Builder
+@EntityListeners(AuditListener.class)
 public class SubjectEntity extends BaseEntity{
 
     private String title;
