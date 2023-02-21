@@ -8,5 +8,5 @@ import java.util.Optional;
 
 public interface SubjectRepository extends JpaRepository<SubjectEntity, Integer> {
 
-    Optional<SubjectEntity> findByTitle(String title);
+    Optional<SubjectEntity> findByTitleIgnoreCase(String title);
 }

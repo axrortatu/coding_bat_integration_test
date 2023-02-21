@@ -1,8 +1,9 @@
 package uz.pdp.spring_boot_security_web.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.OneToMany;
 import lombok.*;
-import uz.pdp.spring_boot_security_web.model.dto.SubjectRequestDTO;
 
 import java.util.List;
 
@@ -18,9 +19,4 @@ public class SubjectEntity extends BaseEntity{
     @OneToMany(fetch = FetchType.EAGER,mappedBy = "subjectEntity")
     private List<TopicEntity> topicEntities;
 
-    public SubjectEntity of(SubjectRequestDTO subjectRequestDTO){
-        return SubjectEntity.builder()
-                .title(subjectRequestDTO.getTitle())
-                .build();
-    }
 }
